@@ -18,16 +18,16 @@ Different actions have different stamina costs. If a character is out of Stamina
 
 CHARACTER ACTION ATTRIBUTES
 
-Offense Score (OS) and Defense Scores (DS)
+Offense Score (OS) and Defense Scores (DS):
 When engaged in combat, every action a character can take is represented with a pair of these values. 
 The pair is collectively called “Score values”. 
 Both values are whole numbers in between and including 0 and 5.
 
-To Hit Score (THS)
+To Hit Score (THS):
 Determines the chance that a character’s attack will be successful (every hit is lethal). 
 This is calculated as (Offense Score - Enemy’s Defense Score)*20% and negative values are rounded up to 0%.
 
-Action Cost (AC)
+Action Cost (AC):
 The amount of Stamina an action costs.
 Calculated as the sum of the action’s current Score values for the action.
 It is possible for a character to use more Stamina than it currently has on its last Action.
