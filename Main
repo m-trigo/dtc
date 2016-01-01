@@ -1,15 +1,12 @@
 /**
- * Program Name: Main.java - A0.01b
+ * Program Name: Main.java - Alpha 0.01b
  *
  * Purpose: 
- * A program that runs a simple game with the following ruleset
-
-
-
+ * A program that runs a simple game with the pre-defined ruleset
+ * 
+ * Coded By: Trigo, Murilo
  *
- * Coded By: Trigo, Murilo #0752075
- *
- * Initial Date: Dec 25, 2015 
+ * Creation Date: Dec 25, 2015 
  * 
  * Last Revision Date: 2015-12-31
  * 
@@ -28,76 +25,45 @@ public class Main
 		Scanner input = new Scanner(System.in);
 		
 		// Game Variables
-		int numberOfEnemiesCurrentlyDefeated = 0;
 		final int NUMBER_OF_DEFEATED_ENEMIES_FOR_WIN_STATE = 5,
 				  MIN_SCORE_VALUE = 0,
 				  MAX_SCORE_VALUE = 5;
-				  
-		@SuppressWarnings("unused")
-		String tempString; // Holds the "Press Any Key" input. 
 		
+		int numberOfEnemiesCurrentlyDefeated = 0;		
+	
 		// Player Object
 		Character player = new Character();
 		
-		
+		// Console Line Interface Assets
+		String screenBreak = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+	
 		/**************************
 		   Pre-Input Instructions
 		 **************************/
 		
-		System.out.println("\nGAME START MESSAGE\n");
-		System.out.print("Press RETURN to continue...");
-		tempString = input.nextLine();
+		System.out.println(screenBreak);
+		System.out.println("\t\tDefend The City - Ver. 0.01b\n\n\n\n");
 		
 		
 		/******************
 		   Main Game Loop
 		 ******************/
 		
-		boolean isGameOver = false;
+		boolean isGameOver = false; // Flags the start of the End-Game Section of the program
 		
 		do
 		{
 			// Pre-Encounter
-			System.out.println("\nYou have encountered an enemy solider!\n");
-			
-			// Restore the Player's Stamina to Max
-			player.stamina = player.maxStamina;
+			System.out.println(screenBreak);
+			System.out.println("You have encountered an enemy solider!");
 			
 			// Generate a new enemy for the encounter
 			Character enemy = new Character();
 				
 			// Encounter Loop
+			
 			boolean isEncounterOver = false;
 			
-			/**
-			 * 
-			 *  TURN STRUCTURE
-	    	 *	
-			 *	1st Step: Decision Step
-			 *	The enemy’s Score values are secretly assigned and the player chooses his for the turn.
-	 		 *
-			 *	2nd Step: Reaction Step
-		   	 *	Both character’s Score values for the turn are revealed. The character with the lowest Offense Score, 
-		   	 *  if any, must chose whether or not to forfeit his Offense Score (i.e. assign its value to 0). 
-		   	 *  The Enemy A.I. will never do so.
-	         *
-			 *	3rd Step: Action Step
-			 *	The action’s Stamina cost of both charaters is deduced from its current Stamina.
-	         *
-			 *	4th Step: Attack Step
-			 *	if characters share the same Offense Score
-			 *	Both characters are considered to be attacking at the same time. Both THS are used independently to check 
-			 *  for the sucess of each character’s attack.
-	         *
-			 *	if characters do NOT share the same Offense Score
-			 *	The character with the highest Offense Score is considered to be attacking first. His THS is used to determine if the attack was successful. 
-			 *  If the attack was not sucessful, then and only then, second character’s THS is used to determine if his attack was sucessful. 
-			 *
-			 *	5th Step: Damage Step
-			 *	If a character was hit by an attack, it dies and the encounter is over. Otherwise, the a new Turn begins until one of the characters is slain.
-			 *
-			 */
-
 			while ( !isEncounterOver)
 			{	
 				
@@ -109,14 +75,14 @@ public class Main
 
 				if (enemy.stamina > 0)
 				{
-					enemy.offenseScore = generateRandomNumber(0,5);
-					enemy.defenseScore = generateRandomNumber(0,5);
+					enemy.offenseScore = generateRandomNumber(MIN_SCORE_VALUE,MAX_SCORE_VALUE);
+					enemy.defenseScore = generateRandomNumber(MIN_SCORE_VALUE,MAX_SCORE_VALUE);
 					
 					if ( (enemy.offenseScore + enemy.defenseScore) >= enemy.stamina )
 					{
 						// Last Wind Action
-						enemy.offenseScore = 5;
-						enemy.defenseScore = 5;
+						enemy.offenseScore = MAX_SCORE_VALUE;
+						enemy.defenseScore = MAX_SCORE_VALUE;
 						
 					}// end if: The enemy will use the last of its Stamina into a final desperate attack, going into Stamina deficit.
 				
@@ -125,8 +91,8 @@ public class Main
 				else
 				{
 					// Enemy Cannot Act
-					enemy.offenseScore = 0;
-					enemy.defenseScore = 0;
+					enemy.offenseScore = MIN_SCORE_VALUE;
+					enemy.defenseScore = MIN_SCORE_VALUE;
 					
 				}// end else: the enemy is out of Stamina
 	
@@ -191,8 +157,8 @@ public class Main
 				else
 				{
 					System.out.println("You are out of Stamina!");
-					player.offenseScore = 0;
-					player.defenseScore = 0;
+					player.offenseScore = MIN_SCORE_VALUE;
+					player.defenseScore = MIN_SCORE_VALUE;
 					
 				}// end else: The player has no Stamina left to act
 				
@@ -219,9 +185,9 @@ public class Main
 					int userInput = input.nextInt();
 					input.nextLine(); // Buffer Flush
 
-					if (userInput == 0)
+					if (userInput == -1)
 					{
-						player.offenseScore = 0;
+						player.offenseScore = MIN_SCORE_VALUE;
 
 					}// end if: player chose to forsake its Offense Score
 					
@@ -234,21 +200,17 @@ public class Main
 				
 				/** 4 - Attack Step **/
 				
-				System.out.println("Debug!");
-				System.out.println("\nPlayer: " + player.offenseScore + " / " + player.defenseScore);
-				System.out.println("Enemy: " + enemy.offenseScore + " / " + enemy.defenseScore + "\n");
+				player.toHitScore = (player.offenseScore - enemy.defenseScore); // Dice Roll needed - Not true percentage chance
+				enemy.toHitScore = (enemy.offenseScore - player.defenseScore); // Dice Roll needed - Not true percentage chance
 				
-				player.toHitScore = (player.offenseScore - enemy.defenseScore)*2; // Dice Roll needed - Not true percentage chance
-				enemy.toHitScore = (enemy.offenseScore - player.defenseScore)*2; // Dice Roll needed - Not true percentage chance
-				
-				System.out.println("\nPlayer THS: " + player.toHitScore);
+				System.out.println("Player THS: " + player.toHitScore);
 				System.out.println("Enemy THS: " + enemy.toHitScore + "\n");
 				
 				/** Damage Step **/ 
 				
 				if (enemy.offenseScore == player.offenseScore)
 				{
-					if (generateRandomNumber(0,9) < player.toHitScore)
+					if (generateRandomNumber(MIN_SCORE_VALUE, (MAX_SCORE_VALUE -1) ) < player.toHitScore)
 					{
 						enemy.isWounded = true;
 						numberOfEnemiesCurrentlyDefeated++; // Running total for Win-State check
@@ -257,7 +219,7 @@ public class Main
 						
 					}// end if: Player character hit the enemy
 					
-					if (generateRandomNumber(0,9) < enemy.toHitScore)
+					if (generateRandomNumber(MIN_SCORE_VALUE, (MAX_SCORE_VALUE -1) ) < enemy.toHitScore)
 					{
 						player.isWounded = true; // Flag for Lose-State check
 						isEncounterOver = true;
@@ -269,7 +231,7 @@ public class Main
 				
 				else if (enemy.offenseScore > player.offenseScore)
 				{
-					if (generateRandomNumber(0,9) < enemy.toHitScore)
+					if (generateRandomNumber(MIN_SCORE_VALUE, (MAX_SCORE_VALUE -1) ) < enemy.toHitScore)
 					{
 						player.isWounded = true; // Flag for Lose-State check
 						isEncounterOver = true;
@@ -277,7 +239,7 @@ public class Main
 						
 					}// end if: Enemy character hit the player
 					
-					else if (generateRandomNumber(0,9) < player.toHitScore)
+					else if (generateRandomNumber(MIN_SCORE_VALUE, (MAX_SCORE_VALUE -1) ) < player.toHitScore)
 					{
 						enemy.isWounded = true;
 						numberOfEnemiesCurrentlyDefeated++; // Running total for Win-State check
@@ -290,7 +252,7 @@ public class Main
 				
 				else
 				{
-					if (generateRandomNumber(0,9) < player.toHitScore)
+					if (generateRandomNumber(MIN_SCORE_VALUE, (MAX_SCORE_VALUE -1) ) < player.toHitScore)
 					{
 						enemy.isWounded = true;
 						numberOfEnemiesCurrentlyDefeated++; // Running total for Win-State check
@@ -299,7 +261,7 @@ public class Main
 						
 					}// end if: Player character hit the enemy
 					
-					else if (generateRandomNumber(0,9) < enemy.toHitScore)
+					else if (generateRandomNumber(MIN_SCORE_VALUE, (MAX_SCORE_VALUE -1) ) < enemy.toHitScore)
 					{
 						player.isWounded = true; // Flag for Lose-State check
 						isEncounterOver = true;
@@ -317,6 +279,14 @@ public class Main
 				isGameOver = true; // Flags the main game loop to end
 				
 			}// end if: player EITHER is NOT able to continue OR has defeated enough enemies
+			
+			else
+			{
+				// Player Rested before the next Encounter
+				player.setStaminaToMax();
+			
+			}// end else: The Player is able to continue and has not yet defeated enough enemies
+
 			
 		}while ( !isGameOver );
 		
@@ -348,8 +318,7 @@ public class Main
 		// End-of-Run Message
 		System.out.println("\n\nGAME RUN END");
 		
-		
-	}//end main
+	}//end main method
 	
 	/**
 	 * Method Name: generateRandomNumber()
@@ -370,4 +339,30 @@ public class Main
 		
 	}// end int returning static method: generateRandomNumber()
 	
-}//end AlphaBuild_0_01a class
+	/**
+	 * Method Name: holdScreen()
+	 * 
+	 * Purpose:
+	 * Static method that holds the program progress until the user provies a valid feed for 
+	 * an nextLine() method call: "Press RETURN to continue"
+	 * 
+	 * Accepts: A Scanner object
+	 * 
+	 * Returns: Nothing
+	 * 
+	 */
+	
+	public static void holdScreen(Scanner scannerObject)
+	{
+		// String Assets
+		String pressToContinue = "Press RETURN to continue...\n";	
+		String screenBreak = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+		
+		System.out.print(pressToContinue);
+		@SuppressWarnings("unused")
+		String tempString = scannerObject.nextLine(); // The Scanner object will hold the program flow until a EOL character is provided
+		System.out.println(screenBreak + "\n");
+	
+	}// end void method holdScreen
+	
+}//end Main class
