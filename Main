@@ -1,33 +1,31 @@
 /**
- * Program Name: Main.java - Alpha 0.01b
+ * Program Name: Main.java
  *
  * Purpose: 
- * A program that runs a simple game with the pre-defined ruleset
+ * A program that runs a simple game with the pre-defined ruleset ver. 0.01a
  * 
  * Coded By: Trigo, Murilo
  *
  * Creation Date: Dec 25, 2015 
  * 
- * Last Revision Date: 2015-12-31
+ * Last Revision Date: 2016-01-01
  * 
  */
 
 import java.util.Scanner;
 public class Main
 {
+
 	public static void main(String[] args)
 	{
 		/*****************
 		   Setup Section
 		 *****************/
 		
-		// Scanner Object - Data Input
-		Scanner input = new Scanner(System.in);
-		
 		// Game Variables
-		final int NUMBER_OF_DEFEATED_ENEMIES_FOR_WIN_STATE = 5,
-				  MIN_SCORE_VALUE = 0,
-				  MAX_SCORE_VALUE = 5;
+		final int NUMBER_OF_DEFEATED_ENEMIES_FOR_WIN_STATE = 5;
+		
+		Scanner input = new Scanner(System.in); // Scanner Object - Data Input
 		
 		int numberOfEnemiesCurrentlyDefeated = 0;		
 	
@@ -42,7 +40,7 @@ public class Main
 		 **************************/
 		
 		System.out.println(screenBreak);
-		System.out.println("\t\tDefend The City - Ver. 0.01b\n\n\n\n");
+		System.out.println("\t\tDefend The City - ver. 0.01a\n\n\n\n");
 		
 		
 		/******************
@@ -67,36 +65,13 @@ public class Main
 			while ( !isEncounterOver)
 			{	
 				
-				/** TURN / ACTIONS **/
+				/** TURN STRUCTURE **/
 				
 				/** 1 - Decision Step **/
-				
-				// Enemy '"' A.I '"' - Even the quotes have quotes
 
-				if (enemy.stamina > 0)
-				{
-					enemy.offenseScore = generateRandomNumber(MIN_SCORE_VALUE,MAX_SCORE_VALUE);
-					enemy.defenseScore = generateRandomNumber(MIN_SCORE_VALUE,MAX_SCORE_VALUE);
-					
-					if ( (enemy.offenseScore + enemy.defenseScore) >= enemy.stamina )
-					{
-						// Last Wind Action
-						enemy.offenseScore = MAX_SCORE_VALUE;
-						enemy.defenseScore = MAX_SCORE_VALUE;
-						
-					}// end if: The enemy will use the last of its Stamina into a final desperate attack, going into Stamina deficit.
-				
-				}// end if: The enemy still has enough Stamina to act
-				
-				else
-				{
-					// Enemy Cannot Act
-					enemy.offenseScore = MIN_SCORE_VALUE;
-					enemy.defenseScore = MIN_SCORE_VALUE;
-					
-				}// end else: the enemy is out of Stamina
+				// Enemy Score Inputs
+				EnemyAI.assignScoreValues(enemy);
 	
-				
 				// Player Score Inputs
 				boolean isInputInvalid = true; // Start assuming the input is invalid
 				int invalidatedInput;
@@ -111,7 +86,7 @@ public class Main
 						invalidatedInput = input.nextInt();
 						input.nextLine(); // Buffer Flush
 
-						if (invalidatedInput >= MIN_SCORE_VALUE && invalidatedInput <= MAX_SCORE_VALUE)
+						if (invalidatedInput >= Character.MIN_SCORE_VALUE && invalidatedInput <= Character.MAX_SCORE_VALUE)
 						{
 							player.offenseScore = invalidatedInput;
 							isInputInvalid = false;
@@ -121,7 +96,7 @@ public class Main
 						else
 						{
 							System.out.println("\nInvalid Input - Please enter a value between and including "
-									+ MIN_SCORE_VALUE + " and " + MAX_SCORE_VALUE + ".\n");
+									+ Character.MIN_SCORE_VALUE + " and " + Character.MAX_SCORE_VALUE + ".\n");
 
 						}// end else: Input was invalid
 
@@ -136,7 +111,7 @@ public class Main
 						invalidatedInput = input.nextInt();
 						input.nextLine(); // Buffer Flush
 
-						if (invalidatedInput >= MIN_SCORE_VALUE && invalidatedInput <= MAX_SCORE_VALUE)
+						if (invalidatedInput >= Character.MIN_SCORE_VALUE && invalidatedInput <= Character.MAX_SCORE_VALUE)
 						{
 							player.defenseScore = invalidatedInput;
 							isInputInvalid = false;
@@ -146,7 +121,7 @@ public class Main
 						else
 						{
 							System.out.println("\nInvalid Input\nPlease enter a value between and including "
-									+ MIN_SCORE_VALUE + " and " + MAX_SCORE_VALUE + ".\n");
+									+ Character.MIN_SCORE_VALUE + " and " + Character.MAX_SCORE_VALUE + ".\n");
 
 						}// end else: Input was invalid
 
@@ -157,8 +132,8 @@ public class Main
 				else
 				{
 					System.out.println("You are out of Stamina!");
-					player.offenseScore = MIN_SCORE_VALUE;
-					player.defenseScore = MIN_SCORE_VALUE;
+					player.offenseScore = Character.MIN_SCORE_VALUE;
+					player.defenseScore = Character.MIN_SCORE_VALUE;
 					
 				}// end else: The player has no Stamina left to act
 				
@@ -187,7 +162,7 @@ public class Main
 
 					if (userInput == -1)
 					{
-						player.offenseScore = MIN_SCORE_VALUE;
+						player.offenseScore = Character.MIN_SCORE_VALUE;
 
 					}// end if: player chose to forsake its Offense Score
 					
@@ -210,7 +185,7 @@ public class Main
 				
 				if (enemy.offenseScore == player.offenseScore)
 				{
-					if (generateRandomNumber(MIN_SCORE_VALUE, (MAX_SCORE_VALUE -1) ) < player.toHitScore)
+					if (CombatHandler.generateRandomNumber(Character.MIN_SCORE_VALUE, (Character.MAX_SCORE_VALUE -1) ) < player.toHitScore)
 					{
 						enemy.isWounded = true;
 						numberOfEnemiesCurrentlyDefeated++; // Running total for Win-State check
@@ -219,7 +194,7 @@ public class Main
 						
 					}// end if: Player character hit the enemy
 					
-					if (generateRandomNumber(MIN_SCORE_VALUE, (MAX_SCORE_VALUE -1) ) < enemy.toHitScore)
+					if (CombatHandler.generateRandomNumber(Character.MIN_SCORE_VALUE, (Character.MAX_SCORE_VALUE -1) ) < enemy.toHitScore)
 					{
 						player.isWounded = true; // Flag for Lose-State check
 						isEncounterOver = true;
@@ -231,7 +206,7 @@ public class Main
 				
 				else if (enemy.offenseScore > player.offenseScore)
 				{
-					if (generateRandomNumber(MIN_SCORE_VALUE, (MAX_SCORE_VALUE -1) ) < enemy.toHitScore)
+					if (CombatHandler.generateRandomNumber(Character.MIN_SCORE_VALUE, (Character.MAX_SCORE_VALUE -1) ) < enemy.toHitScore)
 					{
 						player.isWounded = true; // Flag for Lose-State check
 						isEncounterOver = true;
@@ -239,7 +214,7 @@ public class Main
 						
 					}// end if: Enemy character hit the player
 					
-					else if (generateRandomNumber(MIN_SCORE_VALUE, (MAX_SCORE_VALUE -1) ) < player.toHitScore)
+					else if (CombatHandler.generateRandomNumber(Character.MIN_SCORE_VALUE, (Character.MAX_SCORE_VALUE -1) ) < player.toHitScore)
 					{
 						enemy.isWounded = true;
 						numberOfEnemiesCurrentlyDefeated++; // Running total for Win-State check
@@ -252,7 +227,7 @@ public class Main
 				
 				else
 				{
-					if (generateRandomNumber(MIN_SCORE_VALUE, (MAX_SCORE_VALUE -1) ) < player.toHitScore)
+					if (CombatHandler.generateRandomNumber(Character.MIN_SCORE_VALUE, (Character.MAX_SCORE_VALUE -1) ) < player.toHitScore)
 					{
 						enemy.isWounded = true;
 						numberOfEnemiesCurrentlyDefeated++; // Running total for Win-State check
@@ -261,7 +236,7 @@ public class Main
 						
 					}// end if: Player character hit the enemy
 					
-					else if (generateRandomNumber(MIN_SCORE_VALUE, (MAX_SCORE_VALUE -1) ) < enemy.toHitScore)
+					else if (CombatHandler.generateRandomNumber(Character.MIN_SCORE_VALUE, (Character.MAX_SCORE_VALUE -1) ) < enemy.toHitScore)
 					{
 						player.isWounded = true; // Flag for Lose-State check
 						isEncounterOver = true;
@@ -319,50 +294,5 @@ public class Main
 		System.out.println("\n\nGAME RUN END");
 		
 	}//end main method
-	
-	/**
-	 * Method Name: generateRandomNumber()
-	 * 
-	 * Purpose:
-	 * Static method that returns a random integer between and including two numbers.
-	 * 
-	 * Accepts: two integer values
-	 * 
-	 * Returns: one integer value 
-	 * 
-	 */
-	
-	public static int generateRandomNumber(int lowestValue, int highestValue)
-	{
-		int valueIntervalLength = highestValue - lowestValue + 1;	
-		return (int)(Math.random()*valueIntervalLength) + lowestValue;
-		
-	}// end int returning static method: generateRandomNumber()
-	
-	/**
-	 * Method Name: holdScreen()
-	 * 
-	 * Purpose:
-	 * Static method that holds the program progress until the user provies a valid feed for 
-	 * an nextLine() method call: "Press RETURN to continue"
-	 * 
-	 * Accepts: A Scanner object
-	 * 
-	 * Returns: Nothing
-	 * 
-	 */
-	
-	public static void holdScreen(Scanner scannerObject)
-	{
-		// String Assets
-		String pressToContinue = "Press RETURN to continue...\n";	
-		String screenBreak = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
-		
-		System.out.print(pressToContinue);
-		@SuppressWarnings("unused")
-		String tempString = scannerObject.nextLine(); // The Scanner object will hold the program flow until a EOL character is provided
-		System.out.println(screenBreak + "\n");
-	
-	}// end void method holdScreen
 	
 }//end Main class
