@@ -2,23 +2,21 @@
  * Class Name: Character
  * 
  * Purpose:
- * Holds the varaibles of the player characte and the enemy character
+ * Holds the varaibles of the player and enemy characters
  * 
- * Last Revision Date: 2015-12-30
+ * Last Revision Date: 2015-12-31
  * 
  */
 
 public class Character
 {
-	
 	final int DEFAULT_CHRACTER_MAX_STAMINA = 30;
 	
 	int maxStamina = DEFAULT_CHRACTER_MAX_STAMINA, // 
 		stamina = maxStamina,
 		offenseScore = 0,
-		defenseScore = 0;
-	
-	int toHitScore = 0;
+		defenseScore = 0,
+		toHitScore = 0;
 	
 	boolean isWounded = false;
 	
@@ -27,7 +25,7 @@ public class Character
 	 * Method Name: consumeCurrentActionStamina()
 	 * 
 	 * Purpose:
-	 * Instance method that adjusts the current stamina value based on the
+	 * Instance method that adjusts the current STA value based on the
 	 * current action's Score Values
 	 * 
 	 * Accepts: Nothing
