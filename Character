@@ -4,22 +4,23 @@
  * Purpose:
  * Holds the varaibles of the player and enemy characters
  * 
- * Last Revision Date: 2015-12-31
+ * Last Revision: 2015-12-31
  * 
  */
 
 public class Character
 {
-	final int DEFAULT_CHRACTER_MAX_STAMINA = 30;
+	final static int MIN_SCORE_VALUE = 0,
+	         		 MAX_SCORE_VALUE = 5,
+	         		 MAX_STAMINA = 30;
 	
-	int maxStamina = DEFAULT_CHRACTER_MAX_STAMINA, // 
+	int maxStamina = MAX_STAMINA, 
 		stamina = maxStamina,
 		offenseScore = 0,
 		defenseScore = 0,
 		toHitScore = 0;
 	
 	boolean isWounded = false;
-	
 	
 	/**
 	 * Method Name: consumeCurrentActionStamina()
