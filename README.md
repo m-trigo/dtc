@@ -1,6 +1,6 @@
 # Defend The City
 
-# Alpha 1.01b Ruleset
+# Ruleset ver. alpha 1.01b  as of 2016-01-01
 
 
 OBJECTIVE
