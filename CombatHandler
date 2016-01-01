@@ -1,0 +1,35 @@
+/**
+ * Class Name: CombatHandler.java
+ *
+ * Purpose: 
+ * Holds combat variables and handles all combat claculations and outputs.
+ *
+ * Coded By: Trigo, Murilo
+ *
+ * Last Revision: 2016-01-01
+ * 
+ */
+
+public class CombatHandler
+{
+
+	/**
+	 * Method Name: generateRandomNumber()
+	 * 
+	 * Purpose:
+	 * Static method that returns a random integer between and including two numbers.
+	 * 
+	 * Accepts: two integer values
+	 * 
+	 * Returns: one integer value 
+	 * 
+	 */
+	
+	public static int generateRandomNumber(int lowestValue, int highestValue)
+	{
+		int valueIntervalLength = highestValue - lowestValue + 1;	
+		return (int)(Math.random()*valueIntervalLength) + lowestValue;
+		
+	}// end int returning static method: generateRandomNumber()
+		
+}//end CombatHandler class
