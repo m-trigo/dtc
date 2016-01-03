@@ -23,7 +23,9 @@ This is the night you were trained for.
 
 Starts at 30 and depletes as actions are performed. Replenishes back to maximum after each encounter. 
 
-###Status
+###Wounds
+
+Every character
 
 
 
