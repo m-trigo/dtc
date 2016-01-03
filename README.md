@@ -5,7 +5,7 @@ Last Revision Date: 2016-01-03
  
 - [Fluff](#fluff)
 - [Character Attributes](#character-attributes)
-  - [Stamina (STA)](#stamina-sta)
+  - [Stamina](#stamina)
 - [Action Attributes](#action-attributes)
   - [Offense and Defense Scores](#offense-and-defense-scores)
   - [To Hit Score](#to-hit-score)
@@ -17,18 +17,16 @@ Your city is under attack and you are one of its soldiers.
 Defeat enemies to help stem the tides of invaders who have breached the city walls. 
 This is the night you were trained for.
 
-
 ##Character Attributes
 
-####Stamina (STA)
+####Stamina
 
-Starts at 30 and depletes as actions are performed, but replenishes to maximum after each encounter. 
-Different actions have different stamina costs. If a character is out of Stamina (zero or negative), it cannot act anymore.
+Starts at 30 and depletes as actions are performed. Replenishes back to maximum after each encounter. 
 
 
-CHARACTER ACTION ATTRIBUTES
+##Action Attributes
 
-Offense Score (OS) and Defense Scores (DS)
+####Offense and Defense Scores
 
 When engaged in combat, every action a character can take is represented with a pair of these values. 
 The pair is collectively called “Score values”. 
