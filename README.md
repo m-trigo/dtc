@@ -1,7 +1,6 @@
-# Defend The City
+# Defend The City - ## Ruleset ver. 1.01a
 Last Revision: 2016-01-01
-
-## Ruleset ver. 1.01a
+ 
 
 
 - [Description](#Description)
