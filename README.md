@@ -2,7 +2,7 @@
 Last Revision: 2016-01-03
 
 ## Table of Contents
-- [Game](#game)
+- [Objective](#objective)
     - [Lose States](#lose-states)
     - [Win States](#win-states)
 - [Character Attributes](#character-attributes)
@@ -15,8 +15,8 @@ Last Revision: 2016-01-03
 - [Turn Structure](#turn-structure)
  
 
-##Game
-The walls of your City have been breached and you are attemtping to defend it from conquest by defeating soliders of the invading forces.
+##Objective
+The walls of your City have been breached and you must attemt to defend it from conquest by defeating soliders of the invading forces.
 
 ####Win States
 Defeat 5 enemy soliders.
