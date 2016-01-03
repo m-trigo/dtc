@@ -4,6 +4,8 @@ Last Revision Date: 2016-01-03
 ## Table of Contents
  
 - [Story](#Story)
+- [Character Attributes](#Character Attributes)
+  - [Stamina](#Stamina)
 
 
 Your city is under attack and you are one of its soldiers. 
