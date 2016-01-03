@@ -1,5 +1,5 @@
 # Defend The City - Ruleset (ver. 1.01a)
-Last Revision: 2016-01-01
+Last Revision Date: 2016-01-03
  
 ## Table of Contents
  
