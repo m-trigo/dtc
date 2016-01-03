@@ -1,6 +1,5 @@
 # Defend The City
-
-# Ruleset ver. 1.01a
+## Ruleset ver. 1.01a
 Last Revision: 2016-01-01
 
 OBJECTIVE
