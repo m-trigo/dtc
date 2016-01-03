@@ -1,9 +1,10 @@
 # Defend The City - Ruleset (ver. 1.0.2a)
 Last Revision: 2016-01-03
- 
+
 ## Table of Contents
- 
-- [Fluff](#fluff)
+- [Game](#game)
+  -[Lose States](#lose-states)
+  -[Win States](#win-states)
 - [Character Attributes](#character-attributes)
   - [Stamina](#stamina)
   - [Injuries](#injuries)
@@ -12,11 +13,15 @@ Last Revision: 2016-01-03
   - [To Hit Score](#to-hit-score)
   - [Action Cost](#action-cost)
 - [Turn Structure](#turn-structure)
+- 
+##Game
+Defend your city from conquest by defeating soliders of the invading forces.
 
-##Fluff
-Your city is under attack and you are one of its soldiers. 
-Defeat enemies to help stem the tides of invaders who have breached the city walls. 
-This is the night you were trained for.
+####Lose States
+If the Player Character receives suffers a lethal wound, the game is over.
+
+####Win States
+Defeat 5 enemy soliders.
 
 ##Character Attributes
 
@@ -86,7 +91,3 @@ The attack rolls are checked against each character's THS in the order set by in
 If a character is hit by an attack, it dies and the encounter is over. 
 Otherwise, the a new Turn begins until one of the characters is slain or neiter has any Stamina left.
 
-
-END-GAME
-
-The game ends when the player character dies or when the 5th enemy is defeated. 
