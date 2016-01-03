@@ -24,7 +24,7 @@ This is the night you were trained for.
 
 Starts at 30 and depletes as actions are performed. Replenishes back to maximum after each encounter. 
 
-###Injuries
+####Injuries
 
 Every character starts out uninjured. 
 Every successful hit applies a lethal wound on the target character.
