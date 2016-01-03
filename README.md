@@ -3,16 +3,16 @@ Last Revision Date: 2016-01-03
  
 ## Table of Contents
  
-- [Story](#story)
-- [Character Attributes](#Character Attributes)
-  - [Stamina](#Stamina)
-- [Action Attributes](#Action Attributes)
-  - [Offense and Defense Scores](#Offense and Defense Scores)
-  - [To Hit Score](#To Hit Score)
-  - [Action Cost](#Action Cost)
-- [Turn Structure](#Turn Structure)
+- [Goal](#goal)
+- [Character Attributes](#character-attributes)
+  - [Stamina](#stamina)
+- [Action Attributes](#action-attributes)
+  - [Offense and Defense Scores](#offense-and-defense-scores)
+  - [To Hit Score](#to-hit-score)
+  - [Action Cost](#action-cost)
+- [Turn Structure](#turn-structure)
 
-# Story
+# Goal
 Your city is under attack and you are one of its soldiers. 
 Grab what you can and help to stem the tides of invaders who have breached the walls. 
 This is the night you were trained for.
