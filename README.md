@@ -1,5 +1,5 @@
-# Defend The City - Ruleset (ver. 1.01a)
-Last Revision Date: 2016-01-03
+# Defend The City - Ruleset (ver. Alpha 1.0.2)
+Last Revision: 2016-01-03
  
 ## Table of Contents
  
@@ -23,18 +23,21 @@ This is the night you were trained for.
 
 Starts at 30 and depletes as actions are performed. Replenishes back to maximum after each encounter. 
 
+###Status
+
+
 
 ##Action Attributes
 
 ####Offense and Defense Scores
 
 When engaged in combat, every action a character can take is represented with a pair of these values. 
-The pair is collectively called “Score values”. 
-Both values are whole numbers in between and including 0 and 5.
+The pair is collectively referred as “Score values”. 
+Both values are whole numbers that range from 0 to 5.
 
-To Hit Score (THS)
+###To Hit Score
 
-Determines the chance that a character’s attack will be successful (every hit is lethal). 
+Determines the chance that a character’s attack will be successful.
 This is calculated as (Offense Score - Enemy’s Defense Score)*20% and negative values are rounded up to 0%.
 
 Action Cost (AC)
