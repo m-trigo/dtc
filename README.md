@@ -5,7 +5,7 @@ Last Revision Date: 2016-01-03
  
 - [Fluff](#fluff)
 - [Character Attributes](#character-attributes)
-  - [Stamina](#stamina)
+  - [Stamina (STA)](#stamina-(sta))
 - [Action Attributes](#action-attributes)
   - [Offense and Defense Scores](#offense-and-defense-scores)
   - [To Hit Score](#to-hit-score)
@@ -14,13 +14,13 @@ Last Revision Date: 2016-01-03
 
 ##Fluff
 Your city is under attack and you are one of its soldiers. 
-Defeat enemies and help to stem the tides of invaders who have breached the city walls. 
+Defeat enemies to help stem the tides of invaders who have breached the city walls. 
 This is the night you were trained for.
 
 
 ##Character Attributes
 
-####Stamina
+####Stamina (STA)
 
 Starts at 30 and depletes as actions are performed, but replenishes to maximum after each encounter. 
 Different actions have different stamina costs. If a character is out of Stamina (zero or negative), it cannot act anymore.
