@@ -14,13 +14,13 @@ Last Revision Date: 2016-01-03
 
 ##Fluff
 Your city is under attack and you are one of its soldiers. 
-Grab what you can and help to stem the tides of invaders who have breached the walls. 
+Defeat enemies and help to stem the tides of invaders who have breached the city walls. 
 This is the night you were trained for.
 
 
-CHACATER PRIMARY ATTRIBUTES
+##Character Attributes
 
-Stamina (STA)
+####Stamina
 
 Starts at 30 and depletes as actions are performed, but replenishes to maximum after each encounter. 
 Different actions have different stamina costs. If a character is out of Stamina (zero or negative), it cannot act anymore.
