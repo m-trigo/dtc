@@ -3,7 +3,7 @@ Last Revision Date: 2016-01-03
  
 ## Table of Contents
  
-- [Goal](#goal)
+- [Fluff](#fluff)
 - [Character Attributes](#character-attributes)
   - [Stamina](#stamina)
 - [Action Attributes](#action-attributes)
@@ -12,7 +12,7 @@ Last Revision Date: 2016-01-03
   - [Action Cost](#action-cost)
 - [Turn Structure](#turn-structure)
 
-# Goal
+##Fluff
 Your city is under attack and you are one of its soldiers. 
 Grab what you can and help to stem the tides of invaders who have breached the walls. 
 This is the night you were trained for.
