@@ -1,8 +1,8 @@
-# Defend The City - ## Ruleset ver. 1.01a
+# Defend The City - Ruleset (ver. 1.01a)
 Last Revision: 2016-01-01
  
-
-
+## Table of Contents
+ 
 - [Description](#Description)
 
 Your city is under attack and you are one of its soldiers. 
