@@ -7,7 +7,7 @@ Last Revision Date: 2016-01-03
 - [Character Attributes](#Character Attributes)
   - [Stamina](#Stamina)
 - [Action Attributes](#Action Attributes)
-  -[Offense Score (OS) and Defense Scores (DS)](#Offense Score (OS) and Defense Scores (DS))
+  - [Offense Score (OS) and Defense Scores (DS)](#Offense Score (OS) and Defense Scores (DS))
 
 
 Your city is under attack and you are one of its soldiers. 
