@@ -4,7 +4,7 @@ Last Revision: 2016-01-01
 ## Ruleset ver. 1.01a
 
 
-OBJECTIVE
+[OBJECTIVE]
 
 Your city is under attack and you are one of its soldiers. 
 Grab what you can and help to stem the tides of  invaders who have breached the walls. 
