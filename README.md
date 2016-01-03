@@ -13,15 +13,16 @@ Last Revision: 2016-01-03
   - [To Hit Score](#to-hit-score)
   - [Action Cost](#action-cost)
 - [Turn Structure](#turn-structure)
-- 
-##Game
-Defend your city from conquest by defeating soliders of the invading forces.
+ 
 
-####Lose States
-If the Player Character receives suffers a lethal wound, the game is over.
+##Game
+The walls of your City have been breached and you are attemtping to defend it from conquest by defeating soliders of the invading forces.
 
 ####Win States
 Defeat 5 enemy soliders.
+
+####Lose States
+If the Player Character suffers a lethal wound, the game is over.
 
 ##Character Attributes
 
