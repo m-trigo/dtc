@@ -6,6 +6,7 @@ Last Revision: 2016-01-03
 - [Fluff](#fluff)
 - [Character Attributes](#character-attributes)
   - [Stamina](#stamina)
+  - [Injuries](#injuries)
 - [Action Attributes](#action-attributes)
   - [Offense and Defense Scores](#offense-and-defense-scores)
   - [To Hit Score](#to-hit-score)
@@ -23,11 +24,11 @@ This is the night you were trained for.
 
 Starts at 30 and depletes as actions are performed. Replenishes back to maximum after each encounter. 
 
-###Wounds
+###Injuries
 
-Every character
-
-
+Every character starts out uninjured. 
+Every successful hit applies a lethal wound on the target character.
+A character that is lethaly wounded is considered defeated or deceased.
 
 ##Action Attributes
 
