@@ -3,8 +3,8 @@ Last Revision: 2016-01-03
 
 ## Table of Contents
 - [Game](#game)
-    -[Lose States](#lose-states)
-    -[Win States](#win-states)
+    - [Lose States](#lose-states)
+    - [Win States](#win-states)
 - [Character Attributes](#character-attributes)
   - [Stamina](#stamina)
   - [Injuries](#injuries)
