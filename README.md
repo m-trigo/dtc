@@ -5,7 +5,7 @@ Last Revision Date: 2016-01-03
  
 - [Fluff](#fluff)
 - [Character Attributes](#character-attributes)
-  - [Stamina (STA)](#stamina-(sta))
+  - [Stamina (STA)](#stamina-sta)
 - [Action Attributes](#action-attributes)
   - [Offense and Defense Scores](#offense-and-defense-scores)
   - [To Hit Score](#to-hit-score)
