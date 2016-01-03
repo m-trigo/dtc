@@ -6,9 +6,10 @@ Last Revision Date: 2016-01-03
 - [Story](#Story)
 - [Character Attributes](#Character Attributes)
   - [Stamina](#Stamina)
+- [Action Attributes](#Action Attributes)
+  -[Offense Score (OS) and Defense Scores (DS)](#Offense Score (OS) and Defense Scores (DS))
 
 
-# Story
 Your city is under attack and you are one of its soldiers. 
 Grab what you can and help to stem the tides of invaders who have breached the walls. 
 This is the night you were trained for.
