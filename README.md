@@ -40,9 +40,8 @@ A character that is lethaly wounded is considered defeated or deceased.
 
 ####Offense and Defense Scores
 
-When engaged in combat, every action a character can take is represented with a pair of these values. 
-The pair is collectively referred as “Score values”. 
-Both values are whole numbers that range from 0 to 5.
+When engaged in combat, every action a character can take is represented as a pair of these values. 
+The pair is collectively referred as “Score values”, where both values are whole numbers that range from 0 to 5.
 
 ####To Hit Score
 
@@ -54,12 +53,11 @@ where negative values are rounded up to 0.
 
 ####Action Cost
 
-The amount of Stamina an action costs.
-Calculated as the sum of the action’s current Score values for the action.
-It is possible for a character to use more Stamina than it currently has on its last Action.
+The amount of Stamina an Action costs, calculated as the sum of the Action’s current Score values.
 
+##Turn Structure
 
-TURN STRUCTURE
+Every Turn revolves around the decision and resolution of one Action from each character.
 
 STEP 1: Decision Step
 
