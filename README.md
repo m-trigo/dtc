@@ -42,7 +42,7 @@ Both values are whole numbers that range from 0 to 5.
 
 Determines the chance that a character’s attack upon another will be successful. Calculated as: 
 
-To Hit Score = (Offense Score - Enemy’s Defense Score) / 5,
+*To Hit Score* = (*Offense Score* - *Enemy’s Defense Score*) / 5,
 
 where negative values are rounded up to 0.
 
