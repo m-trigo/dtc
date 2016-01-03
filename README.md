@@ -38,12 +38,13 @@ When engaged in combat, every action a character can take is represented with a 
 The pair is collectively referred as “Score values”. 
 Both values are whole numbers that range from 0 to 5.
 
-###To Hit Score
+####To Hit Score
 
-Determines the chance that a character’s attack will be successful.
-This is calculated as (Offense Score - Enemy’s Defense Score)*20% and negative values are rounded up to 0%.
+Determines the chance that a character’s attack upon another will be successful.
+Calculated as: To Hit Score = (Offense Score - Enemy’s Defense Score)/5.
+Negative values are rounded up to 0.
 
-Action Cost (AC)
+####Action Cost
 
 The amount of Stamina an action costs.
 Calculated as the sum of the action’s current Score values for the action.
