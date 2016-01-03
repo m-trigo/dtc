@@ -1,4 +1,4 @@
-# Defend The City - Ruleset (ver. Alpha 1.0.2)
+# Defend The City - Ruleset (ver. 1.0.2a)
 Last Revision: 2016-01-03
  
 ## Table of Contents
