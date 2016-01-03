@@ -57,7 +57,7 @@ The amount of Stamina an Action costs, calculated as the sum of the Action’s c
 
 ##Turn Structure
 
-Every Turn revolves around the decision and resolution of one Action from each character.
+Every Turn consists of the simultaneous decisions and consequent resolution of one Action from each Character.
 
 STEP 1: Decision Step
 
