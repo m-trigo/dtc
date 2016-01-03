@@ -7,8 +7,11 @@ Last Revision Date: 2016-01-03
 - [Character Attributes](#Character Attributes)
   - [Stamina](#Stamina)
 - [Action Attributes](#Action Attributes)
-  - [Offense Score (OS) and Defense Scores (DS)](#Offense Score (OS) and Defense Scores (DS))
-
+  - [Offense and Defense Scores](#Offense and Defense Scores)
+  - [To Hit Score](#To Hit Score)
+  - [Action Cost](#Action Cost)
+- [Turn Structure](#Turn Structure)
+- 
 
 Your city is under attack and you are one of its soldiers. 
 Grab what you can and help to stem the tides of invaders who have breached the walls. 
