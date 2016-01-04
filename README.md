@@ -35,7 +35,7 @@ Starts at 30 and depletes as [Actions](#action-attributes) are performed. Replen
 
 ####Injuries
 
-Every Character starts out uninjured. 
+Characters start out uninjured. 
 Every [successful hit](#to-hit-score) results in a lethal wound upon the target Character.
 A Character that is lethaly wounded is considered defeated or deceased.
 
@@ -45,8 +45,8 @@ Action Attributes are the same for Actions performed by both the Player Characte
 
 ####Offense and Defense Scores
 
-Every combat Action a Character can perform is represented as a pair of these values. 
-The pair is collectively referred as “Score values”, where both values are whole numbers that range from 0 to 5.
+Every Action that a Character can perform in a Turn is represented as a pair of values. 
+The pair is collectively referred as “Score Values”, where both values are whole numbers that range from 0 to 5.
 
 ####To Hit Score
 
@@ -58,11 +58,11 @@ where negative values are rounded up to 0.
 
 ####Action Cost
 
-The amount of Stamina an Action costs, calculated as the sum of the Action’s current Score values.
+The amount of Stamina an Action costs, calculated as the sum of the Action’s current Score values. If at the start of a Turn, a Character has no Stamina, it cannot assign
 
 ##Encounters
 
-
+Every enemy you meet starts a new combat Encounter. During combat Encounters, Characters act
 
 ##Turn Structure
 
