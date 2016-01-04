@@ -12,6 +12,7 @@ Last Revision: 2016-01-03
   - [Offense and Defense Scores](#offense-and-defense-scores)
   - [To Hit Score](#to-hit-score)
   - [Action Cost](#action-cost)
+- [Encounters](#encounters)
 - [Turn Structure](#turn-structure)
  
 
@@ -19,7 +20,7 @@ Last Revision: 2016-01-03
 The walls of your City have been breached. Defend it from conquest by defeating soliders of the invading forces.
 
 ####Win States
-Defeat 5 enemy soliders.
+Defeat 5 [enemy soliders](#encounters).
 
 ####Lose States
 If the Player Character suffers a [lethal wound](#injuries), the game is over.
@@ -30,13 +31,13 @@ Character Attributes apply equally to both the Player Character and the Enemy Ch
 
 ####Stamina
 
-Starts at 30 and depletes as Actions are performed. Replenishes back to maximum after each encounter. 
+Starts at 30 and depletes as [Actions](#action-attributes) are performed. Replenishes back to maximum after each [encounter](#encounters). 
 
 ####Injuries
 
-Every character starts out uninjured. 
-Every successful hit applies a lethal wound on the target character.
-A character that is lethaly wounded is considered defeated or deceased.
+Every Character starts out uninjured. 
+Every [successful hit](#to-hit-score) results in a lethal wound upon the target Character.
+A Character that is lethaly wounded is considered defeated or deceased.
 
 ##Action Attributes
 
@@ -58,6 +59,10 @@ where negative values are rounded up to 0.
 ####Action Cost
 
 The amount of Stamina an Action costs, calculated as the sum of the Action’s current Score values.
+
+##Encounters
+
+
 
 ##Turn Structure
 
