@@ -45,7 +45,7 @@ Action Attributes are the same for Actions performed by both the Player Characte
 
 ####Offense and Defense Scores
 
-When engaged in combat, every action a character can take is represented as a pair of these values. 
+Every combat Action a Character can perform is represented as a pair of these values. 
 The pair is collectively referred as “Score values”, where both values are whole numbers that range from 0 to 5.
 
 ####To Hit Score
