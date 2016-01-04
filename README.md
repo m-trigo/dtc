@@ -51,17 +51,18 @@ On every turn of combat, a character must decide how much effort to spend on its
 
 Determines the chance that a character’s attack upon another will be successful. Calculated as: 
 
-Character's *To Hit Score* = (Character's *Offense Score* - Target's *Defense Score*) / 5,
+*To Hit Score* = (*Offense Score* - *Target's Defense Score*) / 5
 
-where negative values are rounded up to 0.
+Negative values are rounded up to 0.
 
 ####Action Cost
 
-The amount of Stamina an Action costs, calculated as the sum of the Action’s current Score values. If at the start of a Turn, a Character has no Stamina, it cannot assign
+The amount of stamina an action costs, calculated as the sum of the action’s final score values. If at the start of a turn, a character has no stamina left, it will not be able to act until the end of the encounter.
 
 ##Encounters
 
-Every enemy you meet starts a new combat Encounter. During combat Encounters, Characters act
+Every new enemy you meet will engage you in a combat encounter. 
+Combat takes the form of consecutive turns until one of the characters is defeated or both characters are out of stamina.
 
 ##Turn Structure
 
@@ -69,16 +70,16 @@ Every Turn consists of the resolution of one Action from each Character engaged 
 
 #####Step 1
 
-The Score Values for each Character are chosen.
+The score values for the actions of each character are chosen.
 
 #####Step 2
 
-Both Character’s Score Values for the Turn are revealed. 
-The Character with the lowest Offense Score, if any, must chose whether or not to forfeit his Offense Score.
+Both characters' score values are revealed. 
+The character with the lowest offense score, if any, is given the option to forfeit his own offense score in order to conserve stamina on that action.
 
 #####Step 3
 
-The action’s Stamina cost of both charaters is deduced from its current Stamina.
+All characters have their stamina reduced by the stamina cost of their actions for the turn.
 
 #####Step 4
 
