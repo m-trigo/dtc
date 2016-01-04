@@ -17,36 +17,35 @@ Last Revision: 2016-01-03
  
 
 ##Objective
-The walls of your City have been breached. Defend it from conquest by defeating soliders of the invading forces.
+The walls of your city have been breached. Defend it from conquest by defeating soliders of the invading forces.
 
 ####Win States
 Defeat 5 [enemy soliders](#encounters).
 
 ####Lose States
-If the Player Character suffers a [lethal wound](#injuries), the game is over.
+If the player character suffers a [lethal wound](#injuries), the game is over.
 
 ##Character Attributes
 
-Character Attributes apply equally to both the Player Character and the Enemy Characters.
+Character attributes apply equally to both the player and enemy characters.
 
 ####Stamina
 
-Starts at 30 and depletes as [Actions](#action-attributes) are performed. Replenishes back to maximum after each [encounter](#encounters). 
+Starts at 30 and depletes as [actions](#action-attributes) are performed. A character's stamina replenishes back to its maximum after value each [encounter](#encounters). 
 
 ####Injuries
 
 Characters start out uninjured. 
-Every [successful hit](#to-hit-score) results in a lethal wound upon the target Character.
-A Character that is lethaly wounded is considered defeated or deceased.
+Every [successful hit](#to-hit-score) results in a lethal wound upon the target character.
+A character that is lethaly wounded is considered defeated or deceased.
 
 ##Action Attributes
 
-Action Attributes are the same for Actions performed by both the Player Character and the Enemy Characters.
+Action attributes are the same for actions performed by both the player and enemy characters.
 
 ####Offense and Defense Scores
 
-Every Action that a Character can perform in a Turn is represented as a pair of values. 
-The pair is collectively referred as “Score Values”, where both values are whole numbers that range from 0 to 5.
+On every turn of combat, a character must decide how much effort to spend on its defense and offense. That choice is represented as a pair of whole numbers that range from 0 to 5. The pair of values is collectively referred as “Score Values”.
 
 ####To Hit Score
 
