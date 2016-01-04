@@ -16,7 +16,7 @@ Last Revision: 2016-01-03
  
 
 ##Objective
-The walls of your City have been breached and you must attemt to defend it from conquest by defeating soliders of the invading forces.
+The walls of your City have been breached. Defend it from conquest by defeating soliders of the invading forces.
 
 ####Win States
 Defeat 5 enemy soliders.
@@ -57,13 +57,13 @@ The amount of Stamina an Action costs, calculated as the sum of the Action’s c
 
 ##Turn Structure
 
-Every Turn consists of the simultaneous decisions and consequent resolution of one Action from each Character.
+Every Turn consists of the resolution of one Action from each Character engaged in combat.
 
-STEP 1: Decision Step
+####Step 1: Decision Step
 
 The enemy’s Score values are secretly assigned and the player chooses his for the turn.
 
-STEP 2: Reaction Step
+####Step 2: Reaction Step
 
 Both character’s Score values for the turn are revealed. 
 The character with the lowest Offense Score,if any, must chose whether or not to forfeit his Offense Score.
