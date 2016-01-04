@@ -22,7 +22,7 @@ The walls of your City have been breached. Defend it from conquest by defeating 
 Defeat 5 enemy soliders.
 
 ####Lose States
-If the Player Character suffers a lethal wound, the game is over.
+If the Player Character suffers a [lethal wound](#injuries), the game is over.
 
 ##Character Attributes
 
@@ -30,7 +30,7 @@ Character Attributes apply equally to both the Player Character and the Enemy Ch
 
 ####Stamina
 
-Starts at 30 and depletes as actions are performed. Replenishes back to maximum after each encounter. 
+Starts at 30 and depletes as Actions are performed. Replenishes back to maximum after each encounter. 
 
 ####Injuries
 
