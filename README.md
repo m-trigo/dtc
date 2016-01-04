@@ -26,6 +26,8 @@ If the Player Character suffers a lethal wound, the game is over.
 
 ##Character Attributes
 
+Character Attributes apply equally to both the Player Character and the Enemy Characters.
+
 ####Stamina
 
 Starts at 30 and depletes as actions are performed. Replenishes back to maximum after each encounter. 
@@ -37,6 +39,8 @@ Every successful hit applies a lethal wound on the target character.
 A character that is lethaly wounded is considered defeated or deceased.
 
 ##Action Attributes
+
+Action Attributes are the same for Actions performed by both the Player Character and the Enemy Characters.
 
 ####Offense and Defense Scores
 
@@ -59,21 +63,20 @@ The amount of Stamina an Action costs, calculated as the sum of the Action’s c
 
 Every Turn consists of the resolution of one Action from each Character engaged in combat.
 
-####Step 1
+#####Step 1
 
-The enemy’s Score values are secretly assigned and the player chooses his for the turn.
+The Score Values for each Character are chosen.
 
-####Step 2
+#####Step 2
 
-Both character’s Score values for the turn are revealed. 
-The character with the lowest Offense Score,if any, must chose whether or not to forfeit his Offense Score.
-The Enemy A.I. will never do so.
+Both Character’s Score Values for the Turn are revealed. 
+The Character with the lowest Offense Score, if any, must chose whether or not to forfeit his Offense Score.
 
-####Step 3
+#####Step 3
 
 The action’s Stamina cost of both charaters is deduced from its current Stamina.
 
-####Step 4
+#####Step 4
 
 If characters share the same Offense Score:
 Both characters are considered to be attacking at the same time. 
@@ -84,7 +87,7 @@ The character with the highest Offense Score is considered to be attacking first
 His THS is used to determine if the attack was successful. 
 If the attack was not sucessful, then and only then, second character’s THS is used to determine if his attack was sucessful. 
 
-####Step 5
+#####Step 5
 
 The attack rolls are checked against each character's THS in the order set by in previous step.
 If a character is hit by an attack, it dies and the encounter is over. 
