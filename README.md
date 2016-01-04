@@ -59,21 +59,21 @@ The amount of Stamina an Action costs, calculated as the sum of the Action’s c
 
 Every Turn consists of the resolution of one Action from each Character engaged in combat.
 
-####Step 1: Decision Step
+####Step 1
 
 The enemy’s Score values are secretly assigned and the player chooses his for the turn.
 
-####Step 2: Reaction Step
+####Step 2
 
 Both character’s Score values for the turn are revealed. 
 The character with the lowest Offense Score,if any, must chose whether or not to forfeit his Offense Score.
 The Enemy A.I. will never do so.
 
-STEP 3: Action Step
+####Step 3
 
 The action’s Stamina cost of both charaters is deduced from its current Stamina.
 
-STEP 4: Attack Order Step
+####Step 4
 
 If characters share the same Offense Score:
 Both characters are considered to be attacking at the same time. 
@@ -84,7 +84,7 @@ The character with the highest Offense Score is considered to be attacking first
 His THS is used to determine if the attack was successful. 
 If the attack was not sucessful, then and only then, second character’s THS is used to determine if his attack was sucessful. 
 
-STEP 5: Hit Check Step
+####Step 5
 
 The attack rolls are checked against each character's THS in the order set by in previous step.
 If a character is hit by an attack, it dies and the encounter is over. 
