@@ -79,22 +79,18 @@ The character with the lowest offense score, if any, is given the option to forf
 
 #####Step 3
 
-All characters have their stamina reduced by the stamina cost of their actions for the turn.
+All characters have their stamina reduced by the action cost for the turn.
 
 #####Step 4
 
-If characters share the same Offense Score:
-Both characters are considered to be attacking at the same time. 
-Both THS are used independently to check for the sucess of each character’s attack.
+The offense scores of each character's actions are compared. 
 
-If characters do NOT share the same Offense Score:
-The character with the highest Offense Score is considered to be attacking first. 
-His THS is used to determine if the attack was successful. 
-If the attack was not sucessful, then and only then, second character’s THS is used to determine if his attack was sucessful. 
+If the characters actions share the same offense score, then both are considered to be attacking at the same time and their to hit scores are checked independently.
+
+Otherwise, the character with the highest offense score is considered to be attacking first. 
+That character action's to hit score is checked first. If and only if the attack was not sucessful, the to hit score of the character with the lowest offense score is then checked.
 
 #####Step 5
 
-The attack rolls are checked against each character's THS in the order set by in previous step.
-If a character is hit by an attack, it dies and the encounter is over. 
-Otherwise, the a new Turn begins until one of the characters is slain or neiter has any Stamina left.
+The attack rolls are checked against each character's action's to hit score according to the previous step.
 
