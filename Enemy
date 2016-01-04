@@ -1,0 +1,89 @@
+/**
+ * Class Name: Enemy
+ *
+ * Purpose: 
+ * Sets up the rules that determine the choices made by the program controlled characters.
+ *
+ * Coded By: Trigo, Murilo
+ *
+ * Last Revision: 2016-01-01
+ * 
+ */
+
+public class Enemy extends Character
+{
+	/**
+	 * Method Name: getRandomScoreValue()
+	 * 
+	 * Purpose:
+	 * Static method that returns a random integer value within the 
+	 * pre-set paramethers of the Character Class
+	 * 
+	 * Accepts: Nothing
+	 * 
+	 * Returns: one integer value
+	 * 
+	 */
+	
+	public int getRandomScoreValue()
+	{
+		return CombatHandler.generateRandomNumber(Character.MIN_SCORE_VALUE, Character.MAX_SCORE_VALUE);
+		
+	}// end int returning method getRandomScoreValue()
+	
+	
+	/**
+	 * Method Name: assignScoreValues()
+	 * 
+	 * Purpose:
+	 * Static method that sets the variables of a Character instance
+	 * 
+	 * Accepts: A Character Object
+	 * 
+	 * Returns: Nothing
+	 * 
+	 */
+	
+	public void assignScoreValues(Character enemyObject)
+	{
+		/**
+		 * A.I. LOGIC
+		 * 
+		 * If the character has a positive Stamina value, both Offense and Deffense get
+		 * a random value within the valid score value range.
+		 * 
+		 * If the Stamina cost of the Action would result in a non-positive stamina pool 
+		 * for the Character, it assigns the maximum score value possible for both Offense
+		 * and Defense.
+		 * 
+		 * If the Stamina value of the Character is non-positive, it can only act with the
+		 * lowest possible score for both Offense and Defense.
+		 * 
+		 */
+		
+		if (enemyObject.stamina > 0)
+		{
+			enemyObject.offenseScore = getRandomScoreValue();
+			enemyObject.defenseScore = getRandomScoreValue();
+			
+			if ( (enemyObject.offenseScore + enemyObject.defenseScore) >= enemyObject.stamina )
+			{
+				// Last Wind Action
+				enemyObject.offenseScore = Character.MAX_SCORE_VALUE;
+				enemyObject.defenseScore = Character.MAX_SCORE_VALUE;
+				
+			}// end if: The enemy will use the last of its Stamina into a final desperate attack, going into Stamina deficit.
+		
+		}// end if: The enemy still has enough Stamina to act
+		
+		else
+		{
+			// Enemy Cannot Act
+			enemyObject.offenseScore = Character.MIN_SCORE_VALUE;
+			enemyObject.defenseScore = Character.MIN_SCORE_VALUE;
+			
+		}// end else: the enemy is out of Stamina
+		
+	}// end void method assignScoreValues
+	
+}//end EnemyAI class
