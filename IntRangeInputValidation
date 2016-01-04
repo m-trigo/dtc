@@ -1,0 +1,71 @@
+/**
+ * Class Name: IntRangeInputValidation
+ *
+ * Purpose: 
+ * Blueprint for an input validation loop
+ *
+ * Coded By: Trigo, Murilo 
+ *
+ * Last Revision: 2016-01-04
+ */
+
+import java.util.Scanner;
+public class IntRangeInputValidation
+{
+	String promptMessage,
+		   errorMessage;
+	
+	int minValue,
+		maxValue;
+	
+	Scanner inputObject;
+	
+	
+	public IntRangeInputValidation(Scanner scannerObject, String promptMessage, int minValue , int maxValue)
+	{
+		
+		inputObject = scannerObject;
+		
+		this.promptMessage = promptMessage;
+		this.minValue = minValue;
+		this.maxValue = maxValue;
+		
+		errorMessage = "\nInvalid Input - Please enter a value from "
+				+ minValue + " to " + maxValue + ".\n";
+		
+	}// end InputValidation constructor method
+
+	
+	public int run()
+	{
+
+		boolean isInputInvalid = true;
+		int invalidatedInput,
+			validatedInput = -999;
+	
+		do
+		{
+			System.out.print(promptMessage);
+			invalidatedInput = inputObject.nextInt();
+			inputObject.nextLine(); // Buffer Flush
+
+			if (invalidatedInput >= minValue && invalidatedInput <= maxValue)
+			{
+				validatedInput = invalidatedInput;
+				isInputInvalid = false; // Flags the loop to end
+
+			}// end if: User input is within the accepted range
+
+			else
+			{
+				System.out.println(errorMessage);
+
+			}// end else: Input was invalid
+
+		}while (isInputInvalid); // end while loop: Validation for player OFFENSE SCORE input
+		
+		return validatedInput;
+		
+	}// end void method run()
+	
+}//end class IntRangeInputValidation
