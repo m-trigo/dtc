@@ -31,7 +31,7 @@ Character attributes apply equally to both the player and enemy characters.
 
 ####Stamina
 
-Starts at 30 and depletes as [actions](#action-attributes) are performed. A character's stamina replenishes back to its maximum after value each [encounter](#encounters). 
+Starts at 30 and depletes as [actions](#action-attributes) are performed. A character's stamina replenishes back to maximum after each [encounter](#encounters). 
 
 ####Injuries
 
