@@ -79,7 +79,7 @@ The character with the lowest offense score, if any, is given the option to forf
 
 #####Step 3
 
-All characters have their stamina reduced by the action cost for the turn.
+All characters have their stamina reduced by the action cost on that turn.
 
 #####Step 4
 
