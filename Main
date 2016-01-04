@@ -2,13 +2,14 @@
  * Program Name: Main.java
  *
  * Purpose: 
- * A program that runs a simple game with the pre-defined ruleset ver. 0.01a
+ * A program that runs a simple game with the pre-defined ruleset (ver. 1.0.2a)
+ * https://github.com/sildurend/DTC/blob/master/README.md
  * 
  * Coded By: Trigo, Murilo
  *
  * Creation Date: Dec 25, 2015 
  * 
- * Last Revision Date: 2016-01-01
+ * Last Revision Date: 2016-01-04
  * 
  */
 
@@ -27,20 +28,27 @@ public class Main
 		
 		Scanner input = new Scanner(System.in); // Scanner Object - Data Input
 		
-		int numberOfEnemiesCurrentlyDefeated = 0;		
+		int numberOfEnemiesCurrentlyDefeated = 0;
 	
 		// Player Object
 		Character player = new Character();
 		
 		// Console Line Interface Assets
-		String screenBreak = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+		String screenBreak = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+			   offenseScoreInputPrompt = "Enter your Offense Score for the turn: ",
+			   defenseScoreInputPrompt = "Enter your Defense Score for the turn: ";
+		
+		// Input Validation Objects
+		IntRangeInputValidation offenseScoreValidation = new IntRangeInputValidation(input, offenseScoreInputPrompt , 0, 5);
+		IntRangeInputValidation defenseScoreValidation = new IntRangeInputValidation(input, defenseScoreInputPrompt , 0, 5);
+		
 	
 		/**************************
 		   Pre-Input Instructions
 		 **************************/
 		
 		System.out.println(screenBreak);
-		System.out.println("\t\tDefend The City - ver. 0.01a\n\n\n\n");
+		System.out.println("\t\tDefend The City - ver. 1.0.2a\n");
 		
 		
 		/******************
@@ -53,12 +61,10 @@ public class Main
 		{
 			// Pre-Encounter
 			System.out.println(screenBreak);
-			System.out.println("You have encountered an enemy solider!");
+			System.out.println("You have encountered an enemy solider!\n");
 			
-			// Generate a new enemy for the encounter
-			Character enemy = new Character();
-				
-			// Encounter Loop
+			// Encounter 
+			Enemy enemy = new Enemy(); // Generate a new enemy for the encounter
 			
 			boolean isEncounterOver = false;
 			
@@ -67,65 +73,15 @@ public class Main
 				
 				/** TURN STRUCTURE **/
 				
-				/** 1 - Decision Step **/
+				/** Step 1 **/
 
 				// Enemy Score Inputs
-				EnemyAI.assignScoreValues(enemy);
-	
-				// Player Score Inputs
-				boolean isInputInvalid = true; // Start assuming the input is invalid
-				int invalidatedInput;
+				enemy.assignScoreValues(enemy);
 				
 				if (player.stamina > 0)
 				{	
-					
-					/** Offense Score **/
-					do
-					{
-						System.out.print("Enter your Offense Score for the turn: ");
-						invalidatedInput = input.nextInt();
-						input.nextLine(); // Buffer Flush
-
-						if (invalidatedInput >= Character.MIN_SCORE_VALUE && invalidatedInput <= Character.MAX_SCORE_VALUE)
-						{
-							player.offenseScore = invalidatedInput;
-							isInputInvalid = false;
-
-						}// end if: User input is within the accepted range
-
-						else
-						{
-							System.out.println("\nInvalid Input - Please enter a value between and including "
-									+ Character.MIN_SCORE_VALUE + " and " + Character.MAX_SCORE_VALUE + ".\n");
-
-						}// end else: Input was invalid
-
-					}while (isInputInvalid); // end while loop: Validation for player OFFENSE SCORE input
-
-					
-					/** Defense Score **/
-					isInputInvalid = true; // Otherwise it will accept invalid inputs
-					do
-					{
-						System.out.print("Enter your Defense Score for the turn: ");
-						invalidatedInput = input.nextInt();
-						input.nextLine(); // Buffer Flush
-
-						if (invalidatedInput >= Character.MIN_SCORE_VALUE && invalidatedInput <= Character.MAX_SCORE_VALUE)
-						{
-							player.defenseScore = invalidatedInput;
-							isInputInvalid = false;
-
-						}// end if: User input is within the accepted range
-
-						else
-						{
-							System.out.println("\nInvalid Input\nPlease enter a value between and including "
-									+ Character.MIN_SCORE_VALUE + " and " + Character.MAX_SCORE_VALUE + ".\n");
-
-						}// end else: Input was invalid
-
-					}while (isInputInvalid); // end while loop: Validation for player DEFENSE SCORE input
+					player.offenseScore = offenseScoreValidation.run();
+					player.defenseScore = defenseScoreValidation.run();
 
 				}// end if: The player still has enough stamina to act
 				
@@ -177,9 +133,6 @@ public class Main
 				
 				player.toHitScore = (player.offenseScore - enemy.defenseScore); // Dice Roll needed - Not true percentage chance
 				enemy.toHitScore = (enemy.offenseScore - player.defenseScore); // Dice Roll needed - Not true percentage chance
-				
-				System.out.println("Player THS: " + player.toHitScore);
-				System.out.println("Enemy THS: " + enemy.toHitScore + "\n");
 				
 				/** Damage Step **/ 
 				
