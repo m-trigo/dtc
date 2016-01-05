@@ -61,5 +61,4 @@ public class IntRangeInputValidation
 		return validatedInput;
 		
 	}// end void method getValue()
-	
 }//end class IntRangeInputValidation
