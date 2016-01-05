@@ -1,0 +1,52 @@
+/**
+ * Class Name: EnemyCharacter
+ *
+ * Purpose: 
+ * Sets up the rules that determine the choices made by the program controlled characters.
+ * 
+ * Last Revision: 2016-01-05
+ * 
+ */
+
+public class EnemyCharacter extends Character
+{
+	/**
+	 * Method Name: generateRandomScoreValue()
+	 * 
+	 * Purpose:
+	 * Static method that returns a random integer value within the 
+	 * pre-set paramethers of the Character Class
+	 * 
+	 * Accepts: Nothing
+	 * 
+	 * Returns: one integer value
+	 * 
+	 */
+	
+	public int generateRandomScoreValue()
+	{
+		return CombatHandler.generateRandomNumber(Character.MIN_SCORE_VALUE, Character.MAX_SCORE_VALUE);
+		
+	}// end int returning method generateRandomScoreValue()
+	
+	
+	/**
+	 * Method Name: assignScoreValues()
+	 * 
+	 * Purpose:
+	 * Static method that sets the variables of a Character instance
+	 * 
+	 * Accepts: A Character Object
+	 * 
+	 * Returns: Nothing
+	 * 
+	 */
+	
+	public void getScoreValues()
+	{
+		offenseScore = generateRandomScoreValue();
+		defenseScore = generateRandomScoreValue();
+
+	}// end void method assignScoreValues
+	
+}//end EnemyCharacter class
