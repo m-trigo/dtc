@@ -4,19 +4,12 @@
  * Purpose: 
  * Holds combat variables and handles all combat claculations and outputs.
  * 
- * Last Revision: 2016-01-04
+ * Last Revision: 2016-01-05
  * 
  */
 
 public class CombatHandler
 {
-	
-	public CombatHandler()
-	{
-		boolean isEncounterOver = false;
-	}	
-	
-	
 	/**
 	 * Method Name: areBothCharactersOutOfStamina()
 	 * 
@@ -29,14 +22,14 @@ public class CombatHandler
 	 * 
 	 */
 	
-	public static boolean areBothCharactersOutOfStamina(PlayableCharacter playerCharacter, Enemy enemyCharacter)
+	public static boolean areBothCharactersOutOfStamina(PlayableCharacter playerCharacter, EnemyCharacter enemyCharacter)
 	{
 		return (playerCharacter.stamina <= 0 && enemyCharacter.stamina <= 0);
 	
 	}// end boolean returning method areBothCharactersOutOfStamina
 	
 	/**
-	 * Method Name: startTurnStep1()
+	 * Method Name: callScoreInputs()
 	 * 
 	 * Purpose:
 	 * Gets the Score Values for both characters engaged in combat
@@ -47,7 +40,7 @@ public class CombatHandler
 	 * 
 	 */
 	
-	public static void startTurnStep1(PlayableCharacter playerCharacter, Enemy enemyCharacter)
+	public static void callScoreInputs(PlayableCharacter playerCharacter, EnemyCharacter enemyCharacter)
 	{	
 		// Enemy Score Inputs
 		if (enemyCharacter.stamina > 0)
@@ -84,7 +77,7 @@ public class CombatHandler
 	}// end void method startTurnStep1()
 	
 	/**
-	 * Method Name: startTurnStep2()
+	 * Method Name: revealScoreInputs()
 	 * 
 	 * Purpose:
 	 * Reveals the score values of both characters for the turn
@@ -95,15 +88,15 @@ public class CombatHandler
 	 * 
 	 */
 	
-	public static void startTurnStep2(PlayableCharacter playerCharacter, Enemy enemyCharacter)
+	public static void revealScoreInputs(PlayableCharacter playerCharacter, EnemyCharacter enemyCharacter)
 	{
 		System.out.println("\nPlayer: " + playerCharacter.offenseScore + " / " + playerCharacter.defenseScore);
 		System.out.println("Enemy: " + enemyCharacter.offenseScore + " / " + enemyCharacter.defenseScore + "\n");
 	
-	}// end void method startTurnStep2
+	}// end void method revealScoreInputs
 	
 	/**
-	 * Method Name: startTurnStep3()
+	 * Method Name: consumeStamina()
 	 * 
 	 * Purpose:
 	 * Adjust the stamina values of each character according to the action costs for the turn
@@ -114,15 +107,15 @@ public class CombatHandler
 	 * 
 	 */
 	
-	public static void startTurnStep3(PlayableCharacter playerCharacter, Enemy enemyCharacter)
+	public static void consumeStamina(PlayableCharacter playerCharacter, EnemyCharacter enemyCharacter)
 	{
 		playerCharacter.consumeCurrentActionStamina();
 		enemyCharacter.consumeCurrentActionStamina();
 	
-	}// end void method startTurnStep3
+	}// end void method consumeStamina
 	
 	/**
-	 * Method Name: startTurnStep4()
+	 * Method Name: calculateTHS()
 	 * 
 	 * Purpose:
 	 * Calculate the To Hit Scores of each character's action for the turn
@@ -133,90 +126,31 @@ public class CombatHandler
 	 * 
 	 */
 	
-	public static void startTurnStep4(PlayableCharacter playerCharacter, Enemy enemyCharacter)
+	public static void calculateTHS(PlayableCharacter playerCharacter, EnemyCharacter enemyCharacter)
 	{
 		playerCharacter.toHitScore = (playerCharacter.offenseScore - enemyCharacter.defenseScore); 
 		enemyCharacter.toHitScore = (enemyCharacter.offenseScore - playerCharacter.defenseScore);
 	
-	}// end void method startTurnStep4
+	}// end void method calculateTHS
 	
 	/**
-	 * Method Name: startTurnStep5()
+	 * Method Name: didXhitY()
 	 * 
 	 * Purpose:
+	 * Does the diceroll to check if one character hit another
 	 * 
+	 * Accepts: two Character objects
 	 * 
-	 * Accepts: one Character object and one Enemy object
-	 * 
-	 * Returns: Nothing
+	 * Returns: boolean
 	 * 
 	 */
 	
-	public static void startTurnStep5(PlayableCharacter playerCharacter, Enemy enemyCharacter)
+	public static boolean didXhitY(Character attackingCharacter, Character defendingCharacter)
 	{
-		if (enemyCharacter.offenseScore == playerCharacter.offenseScore)
-		{
-			if (generateRandomNumber(Character.MIN_SCORE_VALUE, (Character.MAX_SCORE_VALUE -1) ) < playerCharacter.toHitScore)
-			{
-				enemyCharacter.isWounded = true;
-				Main.numberOfEnemiesCurrentlyDefeated++; // Running total for Win-State check
-				System.out.println("You defeated the enemy!\n");
+		return generateRandomNumber(Character.MIN_SCORE_VALUE, (Character.MAX_SCORE_VALUE -1) ) < attackingCharacter.toHitScore;
 
-			}// end if: Player character hit the enemy
-
-			if (CombatHandler.generateRandomNumber(Character.MIN_SCORE_VALUE, (Character.MAX_SCORE_VALUE -1) ) < enemy.toHitScore)
-			{
-				playerCharacter.isWounded = true; // Flag for Lose-State check
-				System.out.println("You died!");
-				this.isEncounterOver = true;
-
-			}// end if: Enemy character hit the player
-
-		}// end if: Both characters have the same offense score this turn
-
-		else if (enemy.offenseScore > player.offenseScore)
-		{
-			if (CombatHandler.generateRandomNumber(Character.MIN_SCORE_VALUE, (Character.MAX_SCORE_VALUE -1) ) < enemy.toHitScore)
-			{
-				player.isWounded = true; // Flag for Lose-State check
-				isEncounterOver = true;
-				System.out.println("You died!");
-
-			}// end if: Enemy character hit the player
-
-			else if (CombatHandler.generateRandomNumber(Character.MIN_SCORE_VALUE, (Character.MAX_SCORE_VALUE -1) ) < player.toHitScore)
-			{
-				enemy.isWounded = true;
-				numberOfEnemiesCurrentlyDefeated++; // Running total for Win-State check
-				isEncounterOver = true; // Flags encounter to end				
-				System.out.println("You defeated the enemy!");
-
-			}// end else if: The Enemy missed the Player, but the Player hit the Enemy
-
-		}// end else if: Enemy and Player OS are not equal and Enemy OS is greater than the Player's
-
-		else
-		{
-			if (CombatHandler.generateRandomNumber(Character.MIN_SCORE_VALUE, (Character.MAX_SCORE_VALUE -1) ) < player.toHitScore)
-			{
-				enemy.isWounded = true;
-				numberOfEnemiesCurrentlyDefeated++; // Running total for Win-State check
-				isEncounterOver = true; // Flags encounter to end
-				System.out.println("You defeated the enemy!");
-
-			}// end if: Player character hit the enemy
-
-			else if (CombatHandler.generateRandomNumber(Character.MIN_SCORE_VALUE, (Character.MAX_SCORE_VALUE -1) ) < enemy.toHitScore)
-			{
-				player.isWounded = true; // Flag for Lose-State check
-				isEncounterOver = true;
-				System.out.println("You died!");
-
-			}// end else if: The Player missed the Enemy, but the Enemy character hit the player
-
-		}// end else: Enemy and Player OS are not equal and Enemy OS is NOT greater than the Player's. Therefore The player OS is the largest.
-	}
-
+	}// end boolean returning method didXhitY
+		
 	/**
 	 * Method Name: generateRandomNumber()
 	 * 
