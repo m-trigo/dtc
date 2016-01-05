@@ -9,7 +9,7 @@
  *
  * Creation Date: Dec 25, 2015 
  * 
- * Last Revision Date: 2016-01-04
+ * Last Revision Date: 2016-01-05
  * 
  */
 
@@ -17,11 +17,7 @@ import java.util.Scanner;
 public class Main
 {
 
-	// Game Variables
-	final static int NUMBER_OF_DEFEATED_ENEMIES_FOR_WIN_STATE = 5;
-	
-	static int numberOfEnemiesCurrentlyDefeated = 0,
-			   turnCounter = 1;
+
 	
 	public static void main(String[] args)
 	{
@@ -30,6 +26,12 @@ public class Main
 		   Setup Section
 		 *****************/
 		
+		// Game Variables
+		final int NUMBER_OF_DEFEATED_ENEMIES_FOR_WIN_STATE = 5;
+		
+		 int numberOfEnemiesCurrentlyDefeated = 0,
+				   turnCounter = 1;
+		
 		Scanner input = new Scanner(System.in); // Scanner Object - Data Input
 			
 		// Console Line Interface Assets
@@ -37,7 +39,7 @@ public class Main
 			   offenseScoreInputPrompt = "Offense Score for the turn: ",
 			   defenseScoreInputPrompt = "Defense Score for the turn: ";
 		
-		// Input Validation Objects
+		// Player Input Validation Objects
 		IntRangeInputValidation offenseScoreValidation = new IntRangeInputValidation(input, offenseScoreInputPrompt, 
 															Character.MIN_SCORE_VALUE, Character.MAX_SCORE_VALUE);
 		IntRangeInputValidation defenseScoreValidation = new IntRangeInputValidation(input, defenseScoreInputPrompt, 
@@ -64,10 +66,10 @@ public class Main
 		{
 			// Pre-Encounter
 			System.out.println(screenBreak);
-			System.out.println("You have encountered an enemy solider!\n");
+			System.out.println("You have encountered an enemy solider!");
 			
 			// Encounter 
-			Enemy enemy = new Enemy(); // Generate a new enemy for the encounter		
+			EnemyCharacter enemy = new EnemyCharacter(); // Generate a new enemy for the encounter		
 			boolean isEncounterOver = false; // Flags the end of the encounter
 			turnCounter = 1; // Reset the turn counter back to 1 before each encounter
 			
@@ -78,118 +80,109 @@ public class Main
 				System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TURN " + turnCounter + " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 				
 				/** Step 1 **/
-
-				// Enemy Score Inputs
-				enemy.getScoreValues();
 				
-				if (player.stamina > 0)
-				{	
-					player.offenseScore = offenseScoreValidation.getValue();
-					player.defenseScore = defenseScoreValidation.getValue();
-
-				}// end if: The player still has enough stamina to act
+				// Check if either of the characters has any stamina left to go on
+				if (CombatHandler.areBothCharactersOutOfStamina(player, enemy))
+				{
+					System.out.println("Both characters are out of stamina!");
+					break; // This will break out of the Encounter
+					
+				}// end if: both characters are out of stamina
 				
 				else
 				{
-					System.out.println("You are out of Stamina!");
-					player.offenseScore = Character.MIN_SCORE_VALUE;
-					player.defenseScore = Character.MIN_SCORE_VALUE;
-					
-				}// end else: The player has no Stamina left to act
+					CombatHandler.callScoreInputs(player, enemy);
 				
-				// Draw Check
-				// If both the player and the enemy have no Stamina left, the encounter but it does not 
-				// as a defeated enemy
-				
-				if ( player.stamina <= 0 && enemy.stamina <= 0)
-				{
-					System.out.println("Both characters are out of Stamina - Draw!");
-					break; // This will break out of the Encounter
-					
-				}// end if: Both the enemy and the player are out of Stamina - It's a draw
-				
-				/** 2 - Reaction Step **/
-				
-				System.out.println("\nPlayer: " + player.offenseScore + " / " + player.defenseScore);
-				System.out.println("Enemy: " + enemy.offenseScore + " / " + enemy.defenseScore + "\n");
-				
-				if (player.offenseScore < enemy.offenseScore)
-				{		
-					System.out.print("Enter \"-1\" to forsake your Offense Score for the turn's action"
-							+ "\nOr enter any other number to keep your current one\n");
-					int userInput = input.nextInt();
-					input.nextLine(); // Buffer Flush
+				}// end else: one of both characters do have stamina left
 
-					if (userInput == -1)
-					{
-						player.offenseScore = Character.MIN_SCORE_VALUE;
-
-					}// end if: player chose to forsake its Offense Score
-					
-				}// end if: The player has the lowest Offense Score
+				/** Step 2 **/
 				
-				/** 3 - Action Step **/
+				CombatHandler.revealScoreInputs(player, enemy);
 				
-				player.consumeCurrentActionStamina();
-				enemy.consumeCurrentActionStamina();
 				
-				/** 4 - Attack Step **/
+				// >>>>>>>>>>>>>>>> THE OFFER TO FORFEIT THE OFFENSE SCORE IS MISSING! <<<<<<<<<<<<<<<<<<<<<
 				
-				player.toHitScore = (player.offenseScore - enemy.defenseScore); // Dice Roll needed - Not true percentage chance
-				enemy.toHitScore = (enemy.offenseScore - player.defenseScore); // Dice Roll needed - Not true percentage chance
 				
-				/** Damage Step **/ 
+				/** Step 3 **/
+				
+				CombatHandler.consumeStamina(player, enemy);
+				
+				/** Step 4 **/
+				
+				CombatHandler.calculateTHS(player, enemy);
+				
+				/** Step 5 **/ 
 				
 				if (enemy.offenseScore == player.offenseScore)
 				{
-					if (CombatHandler.generateRandomNumber(Character.MIN_SCORE_VALUE, (Character.MAX_SCORE_VALUE -1) ) < player.toHitScore)
+					if (CombatHandler.didXhitY(player, enemy))
 					{
 						enemy.isWounded = true;
 						numberOfEnemiesCurrentlyDefeated++; // Running total for Win-State check
 						isEncounterOver = true; // Flags encounter to end
-						System.out.println("You defeated the enemy!");
+						System.out.println("You hit the enemy!");
 						
 					}// end if: Player character hit the enemy
 					
-					if (CombatHandler.generateRandomNumber(Character.MIN_SCORE_VALUE, (Character.MAX_SCORE_VALUE -1) ) < enemy.toHitScore)
+					else
+					{
+						System.out.println("You missed the enemy!");
+						
+					}// end else: the player character missed the attack
+					
+					if (CombatHandler.didXhitY(enemy, player))
 					{
 						player.isWounded = true; // Flag for Lose-State check
 						isEncounterOver = true;
-						System.out.println("You died!");
+						System.out.println("The enemy hit you!");
 						
 					}// end if: Enemy character hit the player
+					
+					else
+					{
+						System.out.println("The enemy missed you!");
+						
+					}// end else: the player character missed the attack
 					
 				}// end if: Both characters have the same offense score this turn
 				
 				else if (enemy.offenseScore > player.offenseScore)
 				{
-					if (CombatHandler.generateRandomNumber(Character.MIN_SCORE_VALUE, (Character.MAX_SCORE_VALUE -1) ) < enemy.toHitScore)
+					if (CombatHandler.didXhitY(enemy, player))
 					{
 						player.isWounded = true; // Flag for Lose-State check
 						isEncounterOver = true;
-						System.out.println("You died!");
+						System.out.println("The enemy hit you!");
 						
 					}// end if: Enemy character hit the player
 					
-					else if (CombatHandler.generateRandomNumber(Character.MIN_SCORE_VALUE, (Character.MAX_SCORE_VALUE -1) ) < player.toHitScore)
+					else if (CombatHandler.didXhitY(player, enemy))
 					{
 						enemy.isWounded = true;
 						numberOfEnemiesCurrentlyDefeated++; // Running total for Win-State check
 						isEncounterOver = true; // Flags encounter to end				
-						System.out.println("You defeated the enemy!");
+						System.out.println("The enemy missed you!");
+						System.out.println("You hit the enemy!");
 					
 					}// end else if: The Enemy missed the Player, but the Player hit the Enemy
+					
+					else
+					{
+						System.out.println("The enemy missed you!");
+						System.out.println("You missed the enemy!");		
+					
+					}// end else: the enemy missed the player and the player missed the enemy
 					
 				}// end else if: Enemy and Player OS are not equal and Enemy OS is greater than the Player's
 				
 				else
 				{
-					if (CombatHandler.generateRandomNumber(Character.MIN_SCORE_VALUE, (Character.MAX_SCORE_VALUE -1) ) < player.toHitScore)
+					if (CombatHandler.didXhitY(player, enemy))
 					{
 						enemy.isWounded = true;
 						numberOfEnemiesCurrentlyDefeated++; // Running total for Win-State check
 						isEncounterOver = true; // Flags encounter to end
-						System.out.println("You defeated the enemy!");
+						System.out.println("You hit the enemy!");
 						
 					}// end if: Player character hit the enemy
 					
@@ -197,13 +190,21 @@ public class Main
 					{
 						player.isWounded = true; // Flag for Lose-State check
 						isEncounterOver = true;
-						System.out.println("You died!");
+						System.out.println("You missed the enemy!");
+						System.out.println("The enemy hit you!");
 						
-					}// end else if: The Player missed the Enemy, but the Enemy character hit the player
+					}// end else if: The player missed the Enemy, but the enemy character hit the player
+					
+					else
+					{
+						System.out.println("You missed the enemy!");
+						System.out.println("The enemy missed you!");
+						
+					}// end else: The player missed the enemy and the enemy missed the player
 					
 				}// end else: Enemy and Player OS are not equal and Enemy OS is NOT greater than the Player's. Therefore The player OS is the largest.
 
-				/** END OF TURN **/
+				/** END OF TURN **/	
 				turnCounter++;
 				
 			}// end while loop: Encounter
@@ -233,25 +234,24 @@ public class Main
 		// Player Defeat Scenario
 		if (player.isWounded) 
 		{
-			System.out.print("\nYou died and the city burned that night.\n\nThe End");
+			System.out.print("\nYou died and the city was overtaken.");
 		
 		}// end if: the player was lethalhy wounded
 		
 		// Player Victory Scenario
 		else 
 		{
-			System.out.print("\nThe invading forces retreated and the city saw another dawn.\n\nThe End");
+			System.out.print("\nAfter a costly battle, the invading forces retreated.");
 			
 		}// end else: the main loop was broken, but the player was not wounded, therefore: player defeated enough enemies
+		
+		System.out.println("\n\nThe End");
 		
 		/*************
 		   Post-Game 
 		 *************/
 		
 		input.close(); // Scanner Object clean-up
-		
-		// End-of-Run Message
-		System.out.println("\n\nGAME RUN END");
 		
 	}//end main method
 	
