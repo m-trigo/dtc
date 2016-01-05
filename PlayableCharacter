@@ -2,32 +2,32 @@
  * Class Name: PlayableCharacter
  *
  * Purpose: 
- * Controls the data input for a playable character
+ * Extends the Character class to allow for control 
+ * over the data input for a playable character
  *
- * Last Revision: 2016-01-04
+ * Last Revision: 2016-01-05
  * 
  */
 
 public class PlayableCharacter extends Character
 {
 	
-	IntRangeInputValidation offenseInput,
-							defenseInput;
+	IntRangeInputValidation offenseInputObject,
+	defenseInputObject;
 	
 	public PlayableCharacter(IntRangeInputValidation offenseInputObject, IntRangeInputValidation defenseInputObject)
 	{
-		this.offenseInput = offenseInputObject;
-		this.defenseInput = defenseInputObject;
+		this.offenseInputObject = offenseInputObject;
+		this.defenseInputObject = defenseInputObject;
 		
 	}//end PlayableCharacter constructor method
 	
-
 	/**
 	 * Method Name: inputOffenseScore()
 	 * 
 	 * Purpose:
-	 * Does a call on for the input validation function for the defense score
-	 * and assigns the return value to the instance
+	 * Does a call for the input validation method for the defense score
+	 * and assigns the return value to the current instance
 	 * 
 	 * Accepts: Nothing
 	 * 
@@ -37,7 +37,7 @@ public class PlayableCharacter extends Character
 	
 	public void inputOffenseScore()
 	{
-		this.offenseScore = this.offenseInput.getValue();
+		offenseScore = offenseInputObject.getValue();
 		
 	}// end void method inputOffenseScore
 	
@@ -45,8 +45,8 @@ public class PlayableCharacter extends Character
 	 * Method Name: inputDefenseScore()
 	 * 
 	 * Purpose:
-	 * Does a call on for the input validation function for the offense score
-	 *  and assigns the return value to the instance
+	 * Does a call for the input validation method for the offense score
+	 * and assigns the return value to the current instance
 	 * 
 	 * Accepts: Nothing
 	 * 
@@ -56,7 +56,7 @@ public class PlayableCharacter extends Character
 	
 	public void inputDefenseScore()
 	{
-		this.defenseScore = this.defenseInput.getValue();
+		defenseScore = defenseInputObject.getValue();
 		
 	}// end void method inputDefenseScore
 	
