@@ -2,9 +2,9 @@
  * Class Name: Character
  * 
  * Purpose:
- * Holds the varaibles of the player and enemy characters
+ * Holds and manipulates the varaibles for the player and enemy characters
  * 
- * Last Revision: 2015-12-31
+ * Last Revision: 2016-01-04
  * 
  */
 
@@ -37,7 +37,7 @@ public class Character
 	
 	public void consumeCurrentActionStamina()
 	{
-		stamina -=(offenseScore + defenseScore);
+		this.stamina -=(this.offenseScore + this.defenseScore);
 		
 	}// end void method consumeCurrentActionStamina
 	
@@ -56,7 +56,7 @@ public class Character
 	
 	public void setStaminaToMax()
 	{
-		stamina = maxStamina;
+		this.stamina = this.maxStamina;
 		
 	}// end void method setStaminaToMax	
 	
