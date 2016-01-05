@@ -4,9 +4,8 @@
  * Purpose: 
  * Blueprint for an input validation loop
  *
- * Coded By: Trigo, Murilo 
- *
- * Last Revision: 2016-01-04
+ * Last Revision: 2016-01-05
+ * 
  */
 
 import java.util.Scanner;
@@ -20,13 +19,11 @@ public class IntRangeInputValidation
 	
 	Scanner inputObject;
 	
-	
-	public IntRangeInputValidation(Scanner scannerObject, String promptMessage, int minValue , int maxValue)
+	public IntRangeInputValidation(Scanner scannerObject, String promptString, int minValue , int maxValue)
 	{
 		
 		inputObject = scannerObject;
-		
-		this.promptMessage = promptMessage;
+		promptMessage = promptString;
 		this.minValue = minValue;
 		this.maxValue = maxValue;
 		
@@ -35,14 +32,11 @@ public class IntRangeInputValidation
 		
 	}// end InputValidation constructor method
 
-	
-	public int run()
+	public int getValue()
 	{
-
 		boolean isInputInvalid = true;
 		int invalidatedInput,
-			validatedInput = -999;
-	
+			validatedInput = -999;	
 		do
 		{
 			System.out.print(promptMessage);
@@ -66,6 +60,5 @@ public class IntRangeInputValidation
 		
 		return validatedInput;
 		
-	}// end void method run()
-	
+	}// end void method getValue()
 }//end class IntRangeInputValidation
