@@ -4,7 +4,7 @@
  * Purpose: 
  * Blueprint for an input validation loop
  *
- * Last Revision: 2016-01-04
+ * Last Revision: 2016-01-05
  * 
  */
 
@@ -19,36 +19,31 @@ public class IntRangeInputValidation
 	
 	Scanner inputObject;
 	
-	
-	public IntRangeInputValidation(Scanner scannerObject, String promptMessage, int minValue , int maxValue)
+	public IntRangeInputValidation(Scanner scannerObject, String promptString, int minValue , int maxValue)
 	{
 		
-		this.inputObject = scannerObject;
-		
-		this.promptMessage = promptMessage;
+		inputObject = scannerObject;
+		promptMessage = promptString;
 		this.minValue = minValue;
 		this.maxValue = maxValue;
 		
-		this.errorMessage = "\nInvalid Input - Please enter a value from "
-				+ this.minValue + " to " + this.maxValue + ".\n";
+		errorMessage = "\nInvalid Input - Please enter a value from "
+				+ minValue + " to " + maxValue + ".\n";
 		
 	}// end InputValidation constructor method
 
-	
 	public int getValue()
 	{
-
 		boolean isInputInvalid = true;
 		int invalidatedInput,
-			validatedInput = -999;
-	
+			validatedInput = -999;	
 		do
 		{
-			System.out.print(this.promptMessage);
-			invalidatedInput = this.inputObject.nextInt();
-			this.inputObject.nextLine(); // Buffer Flush
+			System.out.print(promptMessage);
+			invalidatedInput = inputObject.nextInt();
+			inputObject.nextLine(); // Buffer Flush
 
-			if (invalidatedInput >= this.minValue && invalidatedInput <= this.maxValue)
+			if (invalidatedInput >= minValue && invalidatedInput <= maxValue)
 			{
 				validatedInput = invalidatedInput;
 				isInputInvalid = false; // Flags the loop to end
@@ -57,7 +52,7 @@ public class IntRangeInputValidation
 
 			else
 			{
-				System.out.println(this.errorMessage);
+				System.out.println(errorMessage);
 
 			}// end else: Input was invalid
 
