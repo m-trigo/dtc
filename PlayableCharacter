@@ -1,0 +1,64 @@
+/**
+ * Class Name: PlayableCharacter
+ *
+ * Purpose: 
+ * Controls the data input for a playable character
+ *
+ * Last Revision: 2016-01-04
+ * 
+ */
+
+public class PlayableCharacter extends Character
+{
+	
+	IntRangeInputValidation offenseInput,
+							defenseInput;
+	
+	public PlayableCharacter(IntRangeInputValidation offenseInputObject, IntRangeInputValidation defenseInputObject)
+	{
+		this.offenseInput = offenseInputObject;
+		this.defenseInput = defenseInputObject;
+		
+	}//end PlayableCharacter constructor method
+	
+
+	/**
+	 * Method Name: inputOffenseScore()
+	 * 
+	 * Purpose:
+	 * Does a call on for the input validation function for the defense score
+	 * and assigns the return value to the instance
+	 * 
+	 * Accepts: Nothing
+	 * 
+	 * Returns: Nothing
+	 * 
+	 */
+	
+	public void inputOffenseScore()
+	{
+		this.offenseScore = this.offenseInput.getValue();
+		
+	}// end void method inputOffenseScore
+	
+	/**
+	 * Method Name: inputDefenseScore()
+	 * 
+	 * Purpose:
+	 * Does a call on for the input validation function for the offense score
+	 *  and assigns the return value to the instance
+	 * 
+	 * Accepts: Nothing
+	 * 
+	 * Returns: Nothing
+	 * 
+	 */
+	
+	public void inputDefenseScore()
+	{
+		this.defenseScore = this.defenseInput.getValue();
+		
+	}// end void method inputDefenseScore
+	
+	
+}//end class PlayableCharacter
