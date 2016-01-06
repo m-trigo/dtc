@@ -22,13 +22,13 @@ Last Revision: 2016-01-05
      - [Step 6](#step-6)
  
 ##Objective
-Defeat the enemy
+Defeat the enemy.
+
+####Lose States
+Suffer a [lethal wound](#injuries).
 
 ####Win States
 Strike a [lethal wound](#injuries) at the enemy.
-
-####Lose States
-Suffers a [lethal wound](#injuries).
 
 ##Character Attributes
 
