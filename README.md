@@ -1,4 +1,5 @@
-# Defend The City: Single Encounter Test - Ruleset (ver. 1.1.0a)
+# Defend The City: Single Encounter Test
+# Ruleset (ver. 1.1.0a)
 Last Revision: 2016-01-05
 
 ## Table of Contents
@@ -69,7 +70,7 @@ The amount of stamina an action costs, calculated as the sum of the action’s f
 
 Every turn consists of the resolution of one action from each of the characters engaged in combat.
 
-#####Step 1 - 
+#####Step 1
 
 The score values for the actions of each character are chosen.
 
