@@ -80,7 +80,7 @@ Both characters' score values are revealed.
 
 #####Step 3
 
-All characters have their stamina reduced by the action cost on that turn.
+Both characters have their to-hit Scores calculated and their stamina reduced by the action cost on that turn.
 
 #####Step 4
 
